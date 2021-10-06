@@ -12,64 +12,14 @@ namespace WebAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class CarsController : Controller
+    public class CarsController : EntityController<ICarService,Car>
     {
         ICarService _carService;
-
-        public CarsController(ICarService carService)
+        public CarsController(ICarService carService) : base(carService)
         {
             _carService = carService;
         }
 
-        [HttpPost("add")]
-        public IActionResult Add(Car entity)
-        {
-            var result = _carService.Add(entity);
-            if (result.Success)
-                return Ok(result);
-            else
-                return BadRequest(result);
-        }
-
-        [HttpPost("delete")]
-        public IActionResult Delete(Car entity)
-        {
-            var result = _carService.Delete(entity);
-            if (result.Success)
-                return Ok(result);
-            else
-                return BadRequest(result);
-        }
-
-        [HttpPost("get")]
-        public IActionResult Get(int id)
-        {
-            var result = _carService.Get(id);
-            if (result.Success)
-                return Ok(result);
-            else
-                return BadRequest(result);
-        }
-
-        [HttpGet("getall")]
-        public IActionResult GetAll()
-        {
-            var result = _carService.GetAll();
-            if (result.Success)
-                return Ok(result);
-            else
-                return BadRequest(result);
-        }
-
-        [HttpPost("update")]
-        public IActionResult Update(Car entity)
-        {
-            var result = _carService.Update(entity);
-            if (result.Success)
-                return Ok(result);
-            else
-                return BadRequest(result);
-        }
         [HttpGet("getcardetails")]
         public IActionResult GetCarDetails()
         {

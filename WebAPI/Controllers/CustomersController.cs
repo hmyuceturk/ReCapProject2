@@ -11,61 +11,12 @@ namespace WebAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class CustomersController : Controller
+    public class CustomersController : EntityController<ICustomerService, Customer>
     {
-        ICustomerService _customerService;
-
-        public CustomersController(ICustomerService customerService)
+        public CustomersController(ICustomerService customerService) : base(customerService)
         {
-            _customerService = customerService;
-        }
-        [HttpPost("add")]
-        public IActionResult Add(Customer entity)
-        {
-            var result = _customerService.Add(entity);
-            if (result.Success)
-                return Ok(result);
-            else
-                return BadRequest(result);
         }
 
-        [HttpPost("delete")]
-        public IActionResult Delete(Customer entity)
-        {
-            var result = _customerService.Delete(entity);
-            if (result.Success)
-                return Ok(result);
-            else
-                return BadRequest(result);
-        }
-        
-        [HttpPost("update")]
-        public IActionResult Update(Customer entity)
-        {
-            var result = _customerService.Update(entity);
-            if (result.Success)
-                return Ok(result);
-            else
-                return BadRequest(result);
-        }
 
-        [HttpPost("get")]
-        public IActionResult Get(int id)
-        {
-            var result = _customerService.Get(id);
-            if (result.Success)
-                return Ok(result);
-            else
-                return BadRequest(result);
-        }
-        [HttpGet("getall")]
-        public IActionResult GetAll()
-        {
-            var result = _customerService.GetAll();
-            if (result.Success)
-                return Ok(result);
-            else
-                return BadRequest(result);
-        }        
     }
 }
