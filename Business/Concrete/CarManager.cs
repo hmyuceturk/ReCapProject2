@@ -16,25 +16,50 @@ namespace Business.Concrete
         {
             _iCarDal = iCarDal;
         }
-
-        public IResult Add(Car car)
+        public IResult Add(Car entity)
         {
-            if (Validate(car))
+            if (Validate(entity))
             {
-                _iCarDal.Add(car);
+                _iCarDal.Add(entity);
                 return new SuccessResult();
             }
             else
             {
                 return new ErrorResult(Business.Constants.Messages.NotAdded);
             }
-
         }
-
+        public IResult Delete(Car entity)
+        {
+            if (Validate(entity))
+            {
+                _iCarDal.Add(entity);
+                return new SuccessResult();
+            }
+            else
+            {
+                return new ErrorResult(Business.Constants.Messages.NotAdded);
+            }
+        }
+        public IResult Update(Car entity)
+        {
+            if (Validate(entity))
+            {
+                _iCarDal.Add(entity);
+                return new SuccessResult();
+            }
+            else
+            {
+                return new ErrorResult(Business.Constants.Messages.NotAdded);
+            }
+        }
         public IDataResult<List<Car>> GetAll()
         {
 
             return new SuccessDataResult<List<Car>>(_iCarDal.GetAll());      
+        }
+        public IDataResult<Car> Get(int id)
+        {
+            return new SuccessDataResult<Car>(_iCarDal.Get(x=>x.Id==id));
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()

@@ -16,16 +16,30 @@ namespace Business.Concrete
         {
             _brandDal = brandDal;
         }
-
-        public IResult Add(Brand brand)
+        public IResult Add(Brand entity)
         {
-            _brandDal.Add(brand);
-            return new SuccessResult();        }
-
-        public IResult Delete(Brand brand)
-        {
-            _brandDal.Delete(brand);
-            return new SuccessResult();
+                _brandDal.Add(entity);
+                return new SuccessResult();
         }
+        public IResult Delete(Brand entity)
+        {
+                _brandDal.Delete(entity);
+                return new SuccessResult();
+        }
+        public IResult Update(Brand entity)
+        {
+                _brandDal.Update(entity);
+                return new SuccessResult();
+        }
+        public IDataResult<List<Brand>> GetAll()
+        {
+
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll());
+        }
+        public IDataResult<Brand> Get(int id)
+        {
+            return new SuccessDataResult<Brand>(_brandDal.Get(x => x.Id == id));
+        }
+
     }
 }
