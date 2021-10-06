@@ -6,13 +6,8 @@ using System.Text;
 
 namespace Business.Abstract
 {
-    public interface IRentalService
+    public interface IRentalService : IEntityService<Rental>
     {
-        IResult Add(Rental entity);
-        IResult Update(Rental entity);
-        IResult Delete(Rental entity);
-        IDataResult<Rental> Get(int id);
-        IDataResult<List<Rental>> GetAll();
         bool IsCarBusy(int id);
     }
 }

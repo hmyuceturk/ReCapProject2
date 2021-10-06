@@ -6,12 +6,7 @@ using System.Text;
 
 namespace Business.Abstract
 {
-    public interface ICustomerService
+    public interface ICustomerService : IEntityService<Customer>
     {
-        IResult Add(Customer entity);
-        IResult Update(Customer entity);
-        IResult Delete(Customer entity);
-        IDataResult<Customer> Get(int id);
-        IDataResult<List<Customer>> GetAll();
     }
 }

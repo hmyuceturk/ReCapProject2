@@ -6,12 +6,8 @@ using System.Text;
 
 namespace Business.Abstract
 {
-    public interface IBrandService
+    public interface IBrandService:IEntityService<Brand>
     {
-        IResult Add(Brand entity);
-        IResult Delete(Brand entity);
-        IResult Update(Brand entity);
-        IDataResult<List<Brand>> GetAll();
-        IDataResult<Brand> Get(int id);
+        
     }
 }
