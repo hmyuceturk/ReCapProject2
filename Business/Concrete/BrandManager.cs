@@ -16,6 +16,7 @@ namespace Business.Concrete
         {
             _brandDal = brandDal;
         }
+
         public IResult Add(Brand entity)
         {
                 _brandDal.Add(entity);

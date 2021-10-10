@@ -1,8 +1,11 @@
 ﻿using Business.Abstract;
+using Business.ValidationRules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,15 +21,16 @@ namespace Business.Concrete
         }
         public IResult Add(Car entity)
         {
-            if (Validate(entity))
-            {
+            ValidationTool.Validate(new CarValidator(),entity);
+            //if (Validate(entity))
+            //{
                 _iCarDal.Add(entity);
                 return new SuccessResult();
-            }
-            else
-            {
-                return new ErrorResult(Business.Constants.Messages.NotAdded);
-            }
+            //}
+            //else
+            //{
+            //    return new ErrorResult(Business.Constants.Messages.NotAdded);
+            //}
         }
         public IResult Delete(Car entity)
         {
