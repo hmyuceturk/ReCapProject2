@@ -12,8 +12,6 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-
-
             Rental rental = new Rental { CarId = 3, CustomerId = 1, RentDate = DateTime.Now, ReturnDate = DateTime.Now.AddDays(3) };
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
             {
